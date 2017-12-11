@@ -1,0 +1,579 @@
+
+PowerOBCtwoway-Power.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000306  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  00000306  0000039a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000008  00800062  00800062  0000039c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000039c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000003cc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000a8  00000000  00000000  00000408  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000b89  00000000  00000000  000004b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000089c  00000000  00000000  00001039  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000665  00000000  00000000  000018d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000012c  00000000  00000000  00001f3c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000515  00000000  00000000  00002068  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000002a4  00000000  00000000  0000257d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000078  00000000  00000000  00002821  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__vector_19>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 e0       	ldi	r30, 0x06	; 6
+  68:	f3 e0       	ldi	r31, 0x03	; 3
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 36       	cpi	r26, 0x62	; 98
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a2 e6       	ldi	r26, 0x62	; 98
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	aa 36       	cpi	r26, 0x6A	; 106
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 81 01 	jmp	0x302	; 0x302 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+#include "uart.h"
+//-----------------slave receiver----------------------------//
+//unsigned char msg_buf[8]={'9','9','9','9','9','9','9','9'};
+//msg_buf[0]='9';
+int main(void)
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	cd b7       	in	r28, 0x3d	; 61
+  98:	de b7       	in	r29, 0x3e	; 62
+  9a:	2f 97       	sbiw	r28, 0x0f	; 15
+  9c:	0f b6       	in	r0, 0x3f	; 63
+  9e:	f8 94       	cli
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	0f be       	out	0x3f, r0	; 63
+  a4:	cd bf       	out	0x3d, r28	; 61
+    sei();
+  a6:	78 94       	sei
+	//msg_buf[0] ='9';
+	unsigned char HM_data[7];
+	unsigned char msg_buf[8];
+	unsigned char SLA=0x20;
+	//msg_buf[0] ='9';
+	HM_data[0]='9';
+  a8:	89 e3       	ldi	r24, 0x39	; 57
+  aa:	89 83       	std	Y+1, r24	; 0x01
+	init_UART();
+  ac:	0e 94 6f 01 	call	0x2de	; 0x2de <init_UART>
+	TWI_Slave_Initialise(SLA);
+  b0:	80 e2       	ldi	r24, 0x20	; 32
+  b2:	0e 94 7c 00 	call	0xf8	; 0xf8 <TWI_Slave_Initialise>
+	
+	/* TWCR = (1<<TWEN)|                                 // TWI Interface enabled
+	 (1<<TWIE)|(1<<TWINT)|                      // Enable TWI Interupt and clear the flag to send byte
+	 (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           //
+	 (0<<TWWC);*/
+	TWI_Start_Transceiver_With_Data(msg_buf,1);
+  b6:	61 e0       	ldi	r22, 0x01	; 1
+  b8:	ce 01       	movw	r24, r28
+  ba:	08 96       	adiw	r24, 0x08	; 8
+  bc:	0e 94 82 00 	call	0x104	; 0x104 <TWI_Start_Transceiver_With_Data>
+    {
+		
+		unsigned char z = TWI_Get_Data_From_Transceiver(msg_buf , 1);//sr
+		transmit_UART(msg_buf[0]);//sr
+		transmit_UART('a');
+		HM_data[0]='9';
+  c0:	19 e3       	ldi	r17, 0x39	; 57
+	 (0<<TWWC);*/
+	TWI_Start_Transceiver_With_Data(msg_buf,1);
+    while (1) 
+    {
+		
+		unsigned char z = TWI_Get_Data_From_Transceiver(msg_buf , 1);//sr
+  c2:	61 e0       	ldi	r22, 0x01	; 1
+  c4:	ce 01       	movw	r24, r28
+  c6:	08 96       	adiw	r24, 0x08	; 8
+  c8:	0e 94 a5 00 	call	0x14a	; 0x14a <TWI_Get_Data_From_Transceiver>
+		transmit_UART(msg_buf[0]);//sr
+  cc:	88 85       	ldd	r24, Y+8	; 0x08
+  ce:	0e 94 7d 01 	call	0x2fa	; 0x2fa <transmit_UART>
+		transmit_UART('a');
+  d2:	81 e6       	ldi	r24, 0x61	; 97
+  d4:	0e 94 7d 01 	call	0x2fa	; 0x2fa <transmit_UART>
+		HM_data[0]='9';
+  d8:	19 83       	std	Y+1, r17	; 0x01
+		TWI_Start_Transceiver_With_Data(HM_data,1);
+  da:	61 e0       	ldi	r22, 0x01	; 1
+  dc:	ce 01       	movw	r24, r28
+  de:	01 96       	adiw	r24, 0x01	; 1
+  e0:	0e 94 82 00 	call	0x104	; 0x104 <TWI_Start_Transceiver_With_Data>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  e4:	2f ef       	ldi	r18, 0xFF	; 255
+  e6:	80 e7       	ldi	r24, 0x70	; 112
+  e8:	92 e0       	ldi	r25, 0x02	; 2
+  ea:	21 50       	subi	r18, 0x01	; 1
+  ec:	80 40       	sbci	r24, 0x00	; 0
+  ee:	90 40       	sbci	r25, 0x00	; 0
+  f0:	e1 f7       	brne	.-8      	; 0xea <main+0x58>
+  f2:	00 c0       	rjmp	.+0      	; 0xf4 <main+0x62>
+  f4:	00 00       	nop
+  f6:	e5 cf       	rjmp	.-54     	; 0xc2 <main+0x30>
+
+000000f8 <TWI_Slave_Initialise>:
+  TWI_state         = TWI_NO_STATE ;
+  TWCR = (1<<TWEN)|                             // TWI Interface enabled.
+         (1<<TWIE)|(1<<TWINT)|                  // Enable TWI Interupt and clear the flag.
+         (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|       // Prepare to ACK next time the Slave is addressed.
+         (0<<TWWC);                             //
+  TWI_busy = 0;
+  f8:	82 b9       	out	0x02, r24	; 2
+  fa:	84 e0       	ldi	r24, 0x04	; 4
+  fc:	86 bf       	out	0x36, r24	; 54
+  fe:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <TWI_busy>
+ 102:	08 95       	ret
+
+00000104 <TWI_Start_Transceiver_With_Data>:
+ 104:	9c 01       	movw	r18, r24
+ 106:	90 91 64 00 	lds	r25, 0x0064	; 0x800064 <TWI_busy>
+ 10a:	91 11       	cpse	r25, r1
+ 10c:	fe cf       	rjmp	.-4      	; 0x10a <TWI_Start_Transceiver_With_Data+0x6>
+ 10e:	60 93 65 00 	sts	0x0065, r22	; 0x800065 <TWI_msgSize>
+ 112:	66 23       	and	r22, r22
+ 114:	79 f0       	breq	.+30     	; 0x134 <TWI_Start_Transceiver_With_Data+0x30>
+ 116:	f9 01       	movw	r30, r18
+ 118:	a6 e6       	ldi	r26, 0x66	; 102
+ 11a:	b0 e0       	ldi	r27, 0x00	; 0
+ 11c:	61 50       	subi	r22, 0x01	; 1
+ 11e:	70 e0       	ldi	r23, 0x00	; 0
+ 120:	6f 5f       	subi	r22, 0xFF	; 255
+ 122:	7f 4f       	sbci	r23, 0xFF	; 255
+ 124:	c9 01       	movw	r24, r18
+ 126:	86 0f       	add	r24, r22
+ 128:	97 1f       	adc	r25, r23
+ 12a:	21 91       	ld	r18, Z+
+ 12c:	2d 93       	st	X+, r18
+ 12e:	e8 17       	cp	r30, r24
+ 130:	f9 07       	cpc	r31, r25
+ 132:	d9 f7       	brne	.-10     	; 0x12a <TWI_Start_Transceiver_With_Data+0x26>
+ 134:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <TWI_statusReg>
+ 138:	88 ef       	ldi	r24, 0xF8	; 248
+ 13a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+ 13e:	85 ec       	ldi	r24, 0xC5	; 197
+ 140:	86 bf       	out	0x36, r24	; 54
+ 142:	81 e0       	ldi	r24, 0x01	; 1
+ 144:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <TWI_busy>
+ 148:	08 95       	ret
+
+0000014a <TWI_Get_Data_From_Transceiver>:
+****************************************************************************/
+unsigned char TWI_Get_Data_From_Transceiver( unsigned char *msg, unsigned char msgSize )
+{
+  unsigned char i;
+
+  while ( TWI_Transceiver_Busy() ) {_delay_ms(100);}             // Wait until TWI is ready for next transmission.
+ 14a:	20 91 64 00 	lds	r18, 0x0064	; 0x800064 <TWI_busy>
+ 14e:	22 23       	and	r18, r18
+ 150:	69 f0       	breq	.+26     	; 0x16c <TWI_Get_Data_From_Transceiver+0x22>
+ 152:	2f ef       	ldi	r18, 0xFF	; 255
+ 154:	30 e7       	ldi	r19, 0x70	; 112
+ 156:	42 e0       	ldi	r20, 0x02	; 2
+ 158:	21 50       	subi	r18, 0x01	; 1
+ 15a:	30 40       	sbci	r19, 0x00	; 0
+ 15c:	40 40       	sbci	r20, 0x00	; 0
+ 15e:	e1 f7       	brne	.-8      	; 0x158 <TWI_Get_Data_From_Transceiver+0xe>
+ 160:	00 c0       	rjmp	.+0      	; 0x162 <TWI_Get_Data_From_Transceiver+0x18>
+ 162:	00 00       	nop
+ 164:	20 91 64 00 	lds	r18, 0x0064	; 0x800064 <TWI_busy>
+ 168:	21 11       	cpse	r18, r1
+ 16a:	f3 cf       	rjmp	.-26     	; 0x152 <TWI_Get_Data_From_Transceiver+0x8>
+
+  if( TWI_statusReg.lastTransOK )               // Last transmission completed successfully.              
+ 16c:	20 91 63 00 	lds	r18, 0x0063	; 0x800063 <TWI_statusReg>
+ 170:	20 ff       	sbrs	r18, 0
+ 172:	15 c0       	rjmp	.+42     	; 0x19e <TWI_Get_Data_From_Transceiver+0x54>
+  {                                             
+    for ( i=0; i<msgSize; i++ )                 // Copy data from Transceiver buffer.
+ 174:	66 23       	and	r22, r22
+ 176:	71 f0       	breq	.+28     	; 0x194 <TWI_Get_Data_From_Transceiver+0x4a>
+ 178:	e6 e6       	ldi	r30, 0x66	; 102
+ 17a:	f0 e0       	ldi	r31, 0x00	; 0
+ 17c:	a8 2f       	mov	r26, r24
+ 17e:	b9 2f       	mov	r27, r25
+ 180:	61 50       	subi	r22, 0x01	; 1
+ 182:	86 2f       	mov	r24, r22
+ 184:	90 e0       	ldi	r25, 0x00	; 0
+ 186:	89 59       	subi	r24, 0x99	; 153
+ 188:	9f 4f       	sbci	r25, 0xFF	; 255
+    {
+      msg[ i ] = TWI_buf[ i ];
+ 18a:	21 91       	ld	r18, Z+
+ 18c:	2d 93       	st	X+, r18
+
+  while ( TWI_Transceiver_Busy() ) {_delay_ms(100);}             // Wait until TWI is ready for next transmission.
+
+  if( TWI_statusReg.lastTransOK )               // Last transmission completed successfully.              
+  {                                             
+    for ( i=0; i<msgSize; i++ )                 // Copy data from Transceiver buffer.
+ 18e:	e8 17       	cp	r30, r24
+ 190:	f9 07       	cpc	r31, r25
+ 192:	d9 f7       	brne	.-10     	; 0x18a <TWI_Get_Data_From_Transceiver+0x40>
+    {
+      msg[ i ] = TWI_buf[ i ];
+    }
+    TWI_statusReg.RxDataInBuf = FALSE;          // Slave Receive data has been read from buffer.
+ 194:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <TWI_statusReg>
+ 198:	8d 7f       	andi	r24, 0xFD	; 253
+ 19a:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <TWI_statusReg>
+  }
+  return( TWI_statusReg.lastTransOK );                                   
+ 19e:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <TWI_statusReg>
+}
+ 1a2:	81 70       	andi	r24, 0x01	; 1
+ 1a4:	08 95       	ret
+
+000001a6 <__vector_19>:
+This function is the Interrupt Service Routine (ISR), and called when the TWI interrupt is triggered;
+that is whenever a TWI event has occurred. This function should not be called directly from the main
+application.
+****************************************************************************/
+ISR(TWI_vect)
+{
+ 1a6:	1f 92       	push	r1
+ 1a8:	0f 92       	push	r0
+ 1aa:	0f b6       	in	r0, 0x3f	; 63
+ 1ac:	0f 92       	push	r0
+ 1ae:	11 24       	eor	r1, r1
+ 1b0:	8f 93       	push	r24
+ 1b2:	9f 93       	push	r25
+ 1b4:	ef 93       	push	r30
+ 1b6:	ff 93       	push	r31
+  static unsigned char TWI_bufPtr;
+  
+  switch (TWSR)
+ 1b8:	81 b1       	in	r24, 0x01	; 1
+ 1ba:	80 39       	cpi	r24, 0x90	; 144
+ 1bc:	09 f4       	brne	.+2      	; 0x1c0 <__vector_19+0x1a>
+ 1be:	5e c0       	rjmp	.+188    	; 0x27c <__vector_19+0xd6>
+ 1c0:	90 f4       	brcc	.+36     	; 0x1e6 <__vector_19+0x40>
+ 1c2:	80 37       	cpi	r24, 0x70	; 112
+ 1c4:	09 f4       	brne	.+2      	; 0x1c8 <__vector_19+0x22>
+ 1c6:	48 c0       	rjmp	.+144    	; 0x258 <__vector_19+0xb2>
+ 1c8:	38 f4       	brcc	.+14     	; 0x1d8 <__vector_19+0x32>
+ 1ca:	88 23       	and	r24, r24
+ 1cc:	09 f4       	brne	.+2      	; 0x1d0 <__vector_19+0x2a>
+ 1ce:	71 c0       	rjmp	.+226    	; 0x2b2 <__vector_19+0x10c>
+ 1d0:	80 36       	cpi	r24, 0x60	; 96
+ 1d2:	09 f4       	brne	.+2      	; 0x1d6 <__vector_19+0x30>
+ 1d4:	46 c0       	rjmp	.+140    	; 0x262 <__vector_19+0xbc>
+ 1d6:	73 c0       	rjmp	.+230    	; 0x2be <__vector_19+0x118>
+ 1d8:	80 38       	cpi	r24, 0x80	; 128
+ 1da:	09 f4       	brne	.+2      	; 0x1de <__vector_19+0x38>
+ 1dc:	4f c0       	rjmp	.+158    	; 0x27c <__vector_19+0xd6>
+ 1de:	88 38       	cpi	r24, 0x88	; 136
+ 1e0:	09 f4       	brne	.+2      	; 0x1e4 <__vector_19+0x3e>
+ 1e2:	67 c0       	rjmp	.+206    	; 0x2b2 <__vector_19+0x10c>
+ 1e4:	6c c0       	rjmp	.+216    	; 0x2be <__vector_19+0x118>
+ 1e6:	88 3a       	cpi	r24, 0xA8	; 168
+ 1e8:	81 f0       	breq	.+32     	; 0x20a <__vector_19+0x64>
+ 1ea:	38 f4       	brcc	.+14     	; 0x1fa <__vector_19+0x54>
+ 1ec:	88 39       	cpi	r24, 0x98	; 152
+ 1ee:	09 f4       	brne	.+2      	; 0x1f2 <__vector_19+0x4c>
+ 1f0:	60 c0       	rjmp	.+192    	; 0x2b2 <__vector_19+0x10c>
+ 1f2:	80 3a       	cpi	r24, 0xA0	; 160
+ 1f4:	09 f4       	brne	.+2      	; 0x1f8 <__vector_19+0x52>
+ 1f6:	58 c0       	rjmp	.+176    	; 0x2a8 <__vector_19+0x102>
+ 1f8:	62 c0       	rjmp	.+196    	; 0x2be <__vector_19+0x118>
+ 1fa:	80 3c       	cpi	r24, 0xC0	; 192
+ 1fc:	c9 f0       	breq	.+50     	; 0x230 <__vector_19+0x8a>
+ 1fe:	88 3c       	cpi	r24, 0xC8	; 200
+ 200:	09 f4       	brne	.+2      	; 0x204 <__vector_19+0x5e>
+ 202:	57 c0       	rjmp	.+174    	; 0x2b2 <__vector_19+0x10c>
+ 204:	88 3b       	cpi	r24, 0xB8	; 184
+ 206:	19 f0       	breq	.+6      	; 0x20e <__vector_19+0x68>
+ 208:	5a c0       	rjmp	.+180    	; 0x2be <__vector_19+0x118>
+  {
+    case TWI_STX_ADR_ACK:            // Own SLA+R has been received; ACK has been returned
+//    case TWI_STX_ADR_ACK_M_ARB_LOST: // Arbitration lost in SLA+R/W as Master; own SLA+R has been received; ACK has been returned
+      TWI_bufPtr   = 0;                                 // Set buffer pointer to first data location
+ 20a:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__data_end>
+    case TWI_STX_DATA_ACK:           // Data byte in TWDR has been transmitted; ACK has been received
+      TWDR = TWI_buf[TWI_bufPtr++];
+ 20e:	e0 91 62 00 	lds	r30, 0x0062	; 0x800062 <__data_end>
+ 212:	81 e0       	ldi	r24, 0x01	; 1
+ 214:	8e 0f       	add	r24, r30
+ 216:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+ 21a:	f0 e0       	ldi	r31, 0x00	; 0
+ 21c:	ea 59       	subi	r30, 0x9A	; 154
+ 21e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 220:	80 81       	ld	r24, Z
+ 222:	83 b9       	out	0x03, r24	; 3
+      TWCR = (1<<TWEN)|                                 // TWI Interface enabled
+ 224:	85 ec       	ldi	r24, 0xC5	; 197
+ 226:	86 bf       	out	0x36, r24	; 54
+             (1<<TWIE)|(1<<TWINT)|                      // Enable TWI Interupt and clear the flag to send byte
+             (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // 
+             (0<<TWWC);                                 //
+      TWI_busy = 1;
+ 228:	81 e0       	ldi	r24, 0x01	; 1
+ 22a:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <TWI_busy>
+      break;
+ 22e:	4e c0       	rjmp	.+156    	; 0x2cc <__vector_19+0x126>
+    case TWI_STX_DATA_NACK:          // Data byte in TWDR has been transmitted; NACK has been received. 
+                                     // I.e. this could be the end of the transmission.
+      if (TWI_bufPtr == TWI_msgSize) // Have we transceived all expected data?
+ 230:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__data_end>
+ 234:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <TWI_msgSize>
+ 238:	98 13       	cpse	r25, r24
+ 23a:	06 c0       	rjmp	.+12     	; 0x248 <__vector_19+0xa2>
+      {
+        TWI_statusReg.lastTransOK = TRUE;               // Set status bits to completed successfully. 
+ 23c:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <TWI_statusReg>
+ 240:	81 60       	ori	r24, 0x01	; 1
+ 242:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <TWI_statusReg>
+ 246:	03 c0       	rjmp	.+6      	; 0x24e <__vector_19+0xa8>
+      } 
+      else                          // Master has sent a NACK before all data where sent.
+      {
+        TWI_state = TWSR;                               // Store TWI State as errormessage.      
+ 248:	81 b1       	in	r24, 0x01	; 1
+ 24a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+      }        
+                                                        
+      TWCR = (1<<TWEN)|                                 // Enable TWI-interface and release TWI pins
+ 24e:	85 ec       	ldi	r24, 0xC5	; 197
+ 250:	86 bf       	out	0x36, r24	; 54
+             (1<<TWIE)|(1<<TWINT)|                      // Keep interrupt enabled and clear the flag
+             (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // Answer on next address match
+             (0<<TWWC);                                 //
+      
+      TWI_busy = 0;   // Transmit is finished, we are not busy anymore
+ 252:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <TWI_busy>
+      break;     
+ 256:	3a c0       	rjmp	.+116    	; 0x2cc <__vector_19+0x126>
+    case TWI_SRX_GEN_ACK:            // General call address has been received; ACK has been returned
+//    case TWI_SRX_GEN_ACK_M_ARB_LOST: // Arbitration lost in SLA+R/W as Master; General call address has been received; ACK has been returned
+      TWI_statusReg.genAddressCall = TRUE;
+ 258:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <TWI_statusReg>
+ 25c:	84 60       	ori	r24, 0x04	; 4
+ 25e:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <TWI_statusReg>
+    case TWI_SRX_ADR_ACK:            // Own SLA+W has been received ACK has been returned
+//    case TWI_SRX_ADR_ACK_M_ARB_LOST: // Arbitration lost in SLA+R/W as Master; own SLA+W has been received; ACK has been returned    
+                                                        // Don't need to clear TWI_S_statusRegister.generalAddressCall due to that it is the default state.
+      TWI_statusReg.RxDataInBuf = TRUE;      
+ 262:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <TWI_statusReg>
+ 266:	82 60       	ori	r24, 0x02	; 2
+ 268:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <TWI_statusReg>
+      TWI_bufPtr   = 0;                                 // Set buffer pointer to first data location
+ 26c:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__data_end>
+      
+                                                        // Reset the TWI Interrupt to wait for a new event.
+      TWCR = (1<<TWEN)|                                 // TWI Interface enabled
+ 270:	85 ec       	ldi	r24, 0xC5	; 197
+ 272:	86 bf       	out	0x36, r24	; 54
+             (1<<TWIE)|(1<<TWINT)|                      // Enable TWI Interrupt and clear the flag to send byte
+             (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // Expect ACK on this transmission
+             (0<<TWWC);  
+      TWI_busy = 1;
+ 274:	81 e0       	ldi	r24, 0x01	; 1
+ 276:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <TWI_busy>
+      
+      break;
+ 27a:	28 c0       	rjmp	.+80     	; 0x2cc <__vector_19+0x126>
+    case TWI_SRX_ADR_DATA_ACK:       // Previously addressed with own SLA+W; data has been received; ACK has been returned
+    case TWI_SRX_GEN_DATA_ACK:       // Previously addressed with general call; data has been received; ACK has been returned
+      TWI_buf[TWI_bufPtr++]     = TWDR;
+ 27c:	e0 91 62 00 	lds	r30, 0x0062	; 0x800062 <__data_end>
+ 280:	81 e0       	ldi	r24, 0x01	; 1
+ 282:	8e 0f       	add	r24, r30
+ 284:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+ 288:	83 b1       	in	r24, 0x03	; 3
+ 28a:	f0 e0       	ldi	r31, 0x00	; 0
+ 28c:	ea 59       	subi	r30, 0x9A	; 154
+ 28e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 290:	80 83       	st	Z, r24
+      TWI_statusReg.lastTransOK = TRUE;                 // Set flag transmission successful.       
+ 292:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <TWI_statusReg>
+ 296:	81 60       	ori	r24, 0x01	; 1
+ 298:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <TWI_statusReg>
+                                                        // Reset the TWI Interrupt to wait for a new event.
+      TWCR = (1<<TWEN)|                                 // TWI Interface enabled
+ 29c:	85 ec       	ldi	r24, 0xC5	; 197
+ 29e:	86 bf       	out	0x36, r24	; 54
+             (1<<TWIE)|(1<<TWINT)|                      // Enable TWI Interrupt and clear the flag to send byte
+             (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // Send ACK after next reception
+             (0<<TWWC);                                 // 
+      TWI_busy = 1;
+ 2a0:	81 e0       	ldi	r24, 0x01	; 1
+ 2a2:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <TWI_busy>
+      break;
+ 2a6:	12 c0       	rjmp	.+36     	; 0x2cc <__vector_19+0x126>
+    case TWI_SRX_STOP_RESTART:       // A STOP condition or repeated START condition has been received while still addressed as Slave    
+                                                        // Enter not addressed mode and listen to address match
+      TWCR = (1<<TWEN)|                                 // Enable TWI-interface and release TWI pins
+ 2a8:	85 ec       	ldi	r24, 0xC5	; 197
+ 2aa:	86 bf       	out	0x36, r24	; 54
+             (1<<TWIE)|(1<<TWINT)|                      // Enable interrupt and clear the flag
+             (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // Wait for new address match
+             (0<<TWWC);                                 //
+      
+      TWI_busy = 0;  // We are waiting for a new address match, so we are not busy
+ 2ac:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <TWI_busy>
+      
+      break;           
+ 2b0:	0d c0       	rjmp	.+26     	; 0x2cc <__vector_19+0x126>
+    case TWI_SRX_ADR_DATA_NACK:      // Previously addressed with own SLA+W; data has been received; NOT ACK has been returned
+    case TWI_SRX_GEN_DATA_NACK:      // Previously addressed with general call; data has been received; NOT ACK has been returned
+    case TWI_STX_DATA_ACK_LAST_BYTE: // Last data byte in TWDR has been transmitted (TWEA = “0”); ACK has been received
+      //    case TWI_NO_STATE              // No relevant state information available; TWINT = “0”
+    case TWI_BUS_ERROR:         // Bus error due to an illegal START or STOP condition
+      TWI_state = TWSR;                 //Store TWI State as errormessage, operation also clears noErrors bit
+ 2b2:	81 b1       	in	r24, 0x01	; 1
+ 2b4:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+      TWCR =   (1<<TWSTO)|(1<<TWINT);   //Recover from TWI_BUS_ERROR, this will release the SDA and SCL pins thus enabling other devices to use the bus
+ 2b8:	80 e9       	ldi	r24, 0x90	; 144
+ 2ba:	86 bf       	out	0x36, r24	; 54
+      break;
+ 2bc:	07 c0       	rjmp	.+14     	; 0x2cc <__vector_19+0x126>
+    default:     
+      TWI_state = TWSR;                                 // Store TWI State as errormessage, operation also clears the Success bit.      
+ 2be:	81 b1       	in	r24, 0x01	; 1
+ 2c0:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+      TWCR = (1<<TWEN)|                                 // Enable TWI-interface and release TWI pins
+ 2c4:	85 ec       	ldi	r24, 0xC5	; 197
+ 2c6:	86 bf       	out	0x36, r24	; 54
+             (1<<TWIE)|(1<<TWINT)|                      // Keep interrupt enabled and clear the flag
+             (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // Acknowledge on any new requests.
+             (0<<TWWC);                                 //
+      
+      TWI_busy = 0; // Unknown status, so we wait for a new address match that might be something we can handle
+ 2c8:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <TWI_busy>
+  }
+}
+ 2cc:	ff 91       	pop	r31
+ 2ce:	ef 91       	pop	r30
+ 2d0:	9f 91       	pop	r25
+ 2d2:	8f 91       	pop	r24
+ 2d4:	0f 90       	pop	r0
+ 2d6:	0f be       	out	0x3f, r0	; 63
+ 2d8:	0f 90       	pop	r0
+ 2da:	1f 90       	pop	r1
+ 2dc:	18 95       	reti
+
+000002de <init_UART>:
+
+
+void init_UART(void )
+{
+
+  UCSRA = 0;
+ 2de:	1b b8       	out	0x0b, r1	; 11
+  UCSRB = 0;
+ 2e0:	1a b8       	out	0x0a, r1	; 10
+  UCSRC = 0;
+ 2e2:	10 bc       	out	0x20, r1	; 32
+  
+  ///Double Baud Rate
+  UCSRA |= _BV(U2X);
+ 2e4:	59 9a       	sbi	0x0b, 1	; 11
+  ///Enable Reception
+  UCSRB |= _BV(RXEN) | _BV(TXEN);
+ 2e6:	8a b1       	in	r24, 0x0a	; 10
+ 2e8:	88 61       	ori	r24, 0x18	; 24
+ 2ea:	8a b9       	out	0x0a, r24	; 10
+  ///8-bit Data Byte, 2 Stop bits
+  UCSRC |= _BV(USBS) | _BV(UCSZ1) | _BV(UCSZ0);
+ 2ec:	80 b5       	in	r24, 0x20	; 32
+ 2ee:	8e 60       	ori	r24, 0x0E	; 14
+ 2f0:	80 bd       	out	0x20, r24	; 32
+  ///Set Baud Rate to 9600
+  UBRRL = 103;
+ 2f2:	87 e6       	ldi	r24, 0x67	; 103
+ 2f4:	89 b9       	out	0x09, r24	; 9
+  UBRRH = 0;
+ 2f6:	10 bc       	out	0x20, r1	; 32
+ 2f8:	08 95       	ret
+
+000002fa <transmit_UART>:
+}
+
+void transmit_UART(uint8_t data)
+{
+  //* Wait for empty transmit buffer 
+  while ( !(UCSRA & (_BV(UDRE))) );
+ 2fa:	5d 9b       	sbis	0x0b, 5	; 11
+ 2fc:	fe cf       	rjmp	.-4      	; 0x2fa <transmit_UART>
+  //* Start transmission
+  UDR = data;
+ 2fe:	8c b9       	out	0x0c, r24	; 12
+ 300:	08 95       	ret
+
+00000302 <_exit>:
+ 302:	f8 94       	cli
+
+00000304 <__stop_program>:
+ 304:	ff cf       	rjmp	.-2      	; 0x304 <__stop_program>
