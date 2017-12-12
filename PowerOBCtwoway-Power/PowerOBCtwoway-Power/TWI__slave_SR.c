@@ -114,6 +114,9 @@ void TWI_Start_Transceiver_With_Data( unsigned char *msg, unsigned char msgSize 
          (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|       // Prepare to ACK next time the Slave is addressed.
          (0<<TWWC);                             //
   TWI_busy = 1;
+  //transmit_UART('4');
+ // transmit_UART(msg[0]);
+ // transmit_UART('5');
 }
 
 /****************************************************************************
@@ -145,16 +148,20 @@ unsigned char TWI_Get_Data_From_Transceiver( unsigned char *msg, unsigned char m
 {
   unsigned char i;
 
-  while ( TWI_Transceiver_Busy() ) {_delay_ms(100);}             // Wait until TWI is ready for next transmission.
+  while ( TWI_Transceiver_Busy() ) {_delay_ms(0.0000001);}             // Wait until TWI is ready for next transmission.
 
   if( TWI_statusReg.lastTransOK )               // Last transmission completed successfully.              
   {                                             
     for ( i=0; i<msgSize; i++ )                 // Copy data from Transceiver buffer.
     {
       msg[ i ] = TWI_buf[ i ];
+	  // transmit_UART('1');
+	  // transmit_UART(msg[0]);
+	  // transmit_UART('2');
     }
     TWI_statusReg.RxDataInBuf = FALSE;          // Slave Receive data has been read from buffer.
   }
+ 
   return( TWI_statusReg.lastTransOK );                                   
 }
 
@@ -167,6 +174,8 @@ application.
 ****************************************************************************/
 ISR(TWI_vect)
 {
+	//transmit_UART('*');
+	//transmit_UART(TWDR);
   static unsigned char TWI_bufPtr;
   
   switch (TWSR)

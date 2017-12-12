@@ -241,7 +241,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x3ac
+.text           0x00000000      0x39a
  *(.vectors)
  .vectors       0x00000000       0x8c D:/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega128a/avr51/crtatmega128a.o
                 0x00000000                __vector_default
@@ -338,33 +338,33 @@ END GROUP
                 0x00000168                __vector_20
                 0x0000016a                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x0000016a       0x68 Final_OBC.o
+ .text.main     0x0000016a       0x56 Final_OBC.o
                 0x0000016a                main
  .text.TWI_Master_Initialise
-                0x000001d2       0x14 TWI_master.o
-                0x000001d2                TWI_Master_Initialise
+                0x000001c0       0x14 TWI_master.o
+                0x000001c0                TWI_Master_Initialise
  .text.TWI_Start_Transceiver_With_Data
-                0x000001e6       0x44 TWI_master.o
-                0x000001e6                TWI_Start_Transceiver_With_Data
+                0x000001d4       0x44 TWI_master.o
+                0x000001d4                TWI_Start_Transceiver_With_Data
  .text.TWI_Get_Data_From_Transceiver
-                0x0000022a       0x3a TWI_master.o
-                0x0000022a                TWI_Get_Data_From_Transceiver
+                0x00000218       0x3a TWI_master.o
+                0x00000218                TWI_Get_Data_From_Transceiver
  .text.__vector_33
-                0x00000264      0x108 TWI_master.o
-                0x00000264                __vector_33
+                0x00000252      0x108 TWI_master.o
+                0x00000252                __vector_33
  .text.init_UART0
-                0x0000036c       0x22 uart.o
-                0x0000036c                init_UART0
+                0x0000035a       0x22 uart.o
+                0x0000035a                init_UART0
  .text.transmit_UART0
-                0x0000038e        0x8 uart.o
-                0x0000038e                transmit_UART0
- .text.libgcc   0x00000396       0x12 d:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_tablejump2.o)
-                0x00000396                __tablejump2__
-                0x000003a8                . = ALIGN (0x2)
+                0x0000037c        0x8 uart.o
+                0x0000037c                transmit_UART0
+ .text.libgcc   0x00000384       0x12 d:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_tablejump2.o)
+                0x00000384                __tablejump2__
+                0x00000396                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000003a8        0x0 d:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x000003a8                _exit
-                0x000003a8                exit
+ .fini9         0x00000396        0x0 d:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x00000396                _exit
+                0x00000396                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -383,11 +383,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000003a8        0x4 d:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x00000396        0x4 d:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x000003ac                _etext = .
+                0x0000039a                _etext = .
 
-.data           0x00800100        0x2 load address 0x000003ac
+.data           0x00800100        0x2 load address 0x0000039a
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -415,8 +415,8 @@ END GROUP
  .bss.TWI_buf   0x00800105        0x4 TWI_master.o
  *(COMMON)
                 0x00800109                PROVIDE (__bss_end, .)
-                0x000003ac                __data_load_start = LOADADDR (.data)
-                0x000003ae                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000039a                __data_load_start = LOADADDR (.data)
+                0x0000039c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800109        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -501,26 +501,26 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xdff
+.debug_info     0x00000000      0xdc8
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x780 D:/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_info    0x00000780      0x25b Final_OBC.o
- .debug_info    0x000009db      0x27f TWI_master.o
- .debug_info    0x00000c5a      0x1a5 uart.o
+ .debug_info    0x00000780      0x224 Final_OBC.o
+ .debug_info    0x000009a4      0x27f TWI_master.o
+ .debug_info    0x00000c23      0x1a5 uart.o
 
-.debug_abbrev   0x00000000      0xaea
+.debug_abbrev   0x00000000      0xaf3
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x718 D:/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_abbrev  0x00000718      0x13e Final_OBC.o
- .debug_abbrev  0x00000856      0x19e TWI_master.o
- .debug_abbrev  0x000009f4       0xf6 uart.o
+ .debug_abbrev  0x00000718      0x147 Final_OBC.o
+ .debug_abbrev  0x0000085f      0x19e TWI_master.o
+ .debug_abbrev  0x000009fd       0xf6 uart.o
 
-.debug_line     0x00000000      0x748
+.debug_line     0x00000000      0x735
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 D:/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_line    0x00000169      0x156 Final_OBC.o
- .debug_line    0x000002bf      0x28f TWI_master.o
- .debug_line    0x0000054e      0x1fa uart.o
+ .debug_line    0x00000169      0x143 Final_OBC.o
+ .debug_line    0x000002ac      0x28f TWI_master.o
+ .debug_line    0x0000053b      0x1fa uart.o
 
 .debug_frame    0x00000000      0x198
  *(.debug_frame)
@@ -538,11 +538,11 @@ END GROUP
  .debug_str     0x0000056e       0x7e uart.o
                                 0x230 (size before relaxing)
 
-.debug_loc      0x00000000      0x33a
+.debug_loc      0x00000000      0x2aa
  *(.debug_loc)
- .debug_loc     0x00000000       0xd7 Final_OBC.o
- .debug_loc     0x000000d7      0x19b TWI_master.o
- .debug_loc     0x00000272       0xc8 uart.o
+ .debug_loc     0x00000000       0x47 Final_OBC.o
+ .debug_loc     0x00000047      0x19b TWI_master.o
+ .debug_loc     0x000001e2       0xc8 uart.o
 
 .debug_macinfo
  *(.debug_macinfo)

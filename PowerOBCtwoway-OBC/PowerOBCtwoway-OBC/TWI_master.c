@@ -85,16 +85,23 @@ void TWI_Start_Transceiver_With_Data( unsigned char *msg, unsigned char msgSize 
   TWI_buf[0]  = msg[0];                         // Store slave address with R/W setting.
   if (!( msg[0] & (TRUE<<TWI_READ_BIT) ))       // If it is a write operation, then also copy data.
   {
-    for ( temp = 1; temp < msgSize; temp++ )
+    for ( temp = 1; temp < msgSize; temp++ ){
       TWI_buf[ temp ] = msg[ temp ];
+	//transmit_UART0(TWI_buf[temp]);
+	}
   }
   TWI_statusReg.all = 0;      
   TWI_state         = TWI_NO_STATE ;
+ // transmit_UART0('*');
+ // _delay_ms(1000);
   TWCR = (1<<TWEN)|                             // TWI Interface enabled.
          (1<<TWIE)|(1<<TWINT)|                  // Enable TWI Interupt and clear the flag.
          (0<<TWEA)|(1<<TWSTA)|(0<<TWSTO)|       // Initiate a START condition.
-         (0<<TWWC);        
-	//transmit_UART0(msg[1]);                     //
+         (0<<TWWC);   
+		// transmit_UART0('1');     
+	//transmit_UART0(msg[1]);  
+	//transmit_UART0('2');                   //
+	
 }
 
 /****************************************************************************
@@ -151,6 +158,9 @@ application.
 //#pragma vector=TWI_vect
 ISR(TWI_vect)
 {
+	//transmit_UART0('a');
+	//transmit_UART0(TWDR);
+	//_delay_ms(50);
   static unsigned char TWI_bufPtr;
  // transmit_UART0(TWSR);
   switch (TWSR)

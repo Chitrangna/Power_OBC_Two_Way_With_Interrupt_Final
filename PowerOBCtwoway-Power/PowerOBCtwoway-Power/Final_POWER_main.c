@@ -36,14 +36,15 @@ int main(void)
     {
 		
 		unsigned char z = TWI_Get_Data_From_Transceiver(msg_buf , 1);//sr
+		//transmit_UART('a');
 		transmit_UART(msg_buf[0]);//sr
-		transmit_UART('a');
-		HM_data[0]='9';
+		//transmit_UART('b');
+		//HM_data[0]='9';
 		TWI_Start_Transceiver_With_Data(HM_data,1);
 		
 		//HM_data[0]='9';
 		//HM_data[0]=receive_UART();//st
-		_delay_ms(100);//sr
+		_delay_ms(3000);//sr
 		
 	}
 }
